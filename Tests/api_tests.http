@@ -1,0 +1,145 @@
+
+### 1. Auth Tests
+
+### Register Admin
+POST http://localhost:5017/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "password": "Admin123!",
+    "role": "Admin"
+}
+
+### Register Manager
+POST http://localhost:5017/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "Manager User",
+    "email": "manager@example.com",
+    "password": "Manager123!",
+    "role": "Manager"
+}
+
+### Login
+POST http://localhost:5017/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "admin@example.com",
+    "password": "Admin123!"
+}
+
+### Store the token from login response
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc0MjkzMTMzNywiZXhwIjoxNzQzNTM2MTM3LCJpYXQiOjE3NDI5MzEzMzd9.iwt0sy0Fl_q4d78JAuyivQjNmomN1Vi3JVIbZ5KLGOM
+### 2. Users Tests
+
+### Get All Users
+GET http://localhost:5017/api/users
+Authorization: Bearer {{authToken}}
+
+### Get User by ID
+GET http://localhost:5017/api/users/1
+Authorization: Bearer {{authToken}}
+
+### Get User Performance
+GET http://localhost:5017/api/users/1/performance
+Authorization: Bearer {{authToken}}
+
+### 3. Attendance Tests
+
+### Check In
+POST http://localhost:5017/api/attendance/check-in
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "notes": "Checked in for the day"
+}
+
+### Check Out
+POST http://localhost:5017/api/attendance/check-out
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "notes": "Checked out for the day"
+}
+
+### Get Today's Attendance
+GET http://localhost:5017/api/attendance/user/1/today
+Authorization: Bearer {{authToken}}
+
+### Get Attendance Statistics
+GET http://localhost:5017/api/attendance/statistics?startDate=2024-01-01&endDate=2024-12-31
+Authorization: Bearer {{authToken}}
+
+### 4. Tasks Tests
+
+### Get All Tasks
+GET http://localhost:5017/api/tasks
+Authorization: Bearer {{authToken}}
+
+### Create Task
+POST http://localhost:5017/api/tasks
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "clientId": 1,
+    "dealId": 1,
+    "title": "Test Task",
+    "description": "Test Description",
+    "dueDate": "2024-12-31",
+    "status": "New"
+}
+
+### Update Task Status
+PUT http://localhost:5017/api/tasks/1/status
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+"In Progress"
+
+### Get Overdue Tasks
+GET http://localhost:5017/api/tasks/overdue
+Authorization: Bearer {{authToken}}
+
+### 5. Deals Tests
+
+### Get All Deals
+GET http://localhost:5017/api/deals
+Authorization: Bearer {{authToken}}
+
+### Create Deal
+POST http://localhost:5017/api/deals
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "clientId": 1,
+    "userId": 1,
+    "title": "Test Deal",
+    "amount": 10000,
+    "status": "New"
+}
+
+### Update Deal Status
+PUT http://localhost:5017/api/deals/1/status
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+"In Progress"
+
+### Get Deals Analytics
+GET http://localhost:5017/api/deals/analytics?startDate=2024-01-01&endDate=2024-12-31
+Authorization: Bearer {{authToken}}
+
+### Get Deals Pipeline
+GET http://localhost:5017/api/deals/pipeline
+Authorization: Bearer {{authToken}}
