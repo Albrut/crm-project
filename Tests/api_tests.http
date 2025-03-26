@@ -33,7 +33,7 @@ Content-Type: application/json
 }
 
 ### Store the token from login response
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc0MjkzMTMzNywiZXhwIjoxNzQzNTM2MTM3LCJpYXQiOjE3NDI5MzEzMzd9.iwt0sy0Fl_q4d78JAuyivQjNmomN1Vi3JVIbZ5KLGOM
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc0Mjk3NjQ2OCwiZXhwIjoxNzQzNTgxMjY4LCJpYXQiOjE3NDI5NzY0Njh9.nkduK3DL6yF2DPalPdk5UZYheb-W4tNcUo45WKWN4Jo
 ### 2. Users Tests
 
 ### Get All Users
@@ -77,7 +77,7 @@ Authorization: Bearer {{authToken}}
 ### Get Attendance Statistics
 GET http://localhost:5017/api/attendance/statistics?startDate=2024-01-01&endDate=2024-12-31
 Authorization: Bearer {{authToken}}
-
+    
 ### 4. Tasks Tests
 
 ### Get All Tasks
